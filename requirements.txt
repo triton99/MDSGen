@@ -1,0 +1,10 @@
+accelerate==0.33.0
+diffusers==0.20.2
+huggingface-hub==0.24.5
+numpy==1.23.4
+SoundFile==0.10.2
+timm==1.0.8
+tqdm==4.66.4
+transformers==4.30.2
+# pip install torch==2.1.0 torchvision==0.16.0 torchaudio==2.1.0 --index-url https://download.pytorch.org/whl/cu121
+# pip install -e .
