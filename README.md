@@ -14,7 +14,7 @@
 ### [Project Page](https://triton99.github.io/mdsgen-site/) | [Arxiv](https://arxiv.org/abs/2410.02130)
 
 ## TODO
-- [ ] Release model weights on Google Drive.
+- [x] Release model weights on Google Drive.
 - [x] Release inference code
 - [ ] Release training code & dataset preparation
 
@@ -40,10 +40,12 @@ pip install -e .
 
 ### Download Checkpoints
 
-The pretrained checkpoints can be downloaded on Google Drive.
+The pretrained checkpoints can be downloaded on [Google Drive](https://drive.google.com/file/d/1XZoK-uU0mTWeRLilLZ_FtysRgearBxOp/view?usp=sharing).
 
 ### Inference
+Before running inference, extract CAVP features from the video described in the [Diff-Foley](https://github.com/luosiallen/Diff-Foley/blob/main/inference/diff_foley_inference.ipynb).
 
+To run the inference code, you can use the following command:
 ```bash
 python inference.py --ckpt ./ckpts/mdsgen_audioldm.pt --video_feat_path ./sources/__2MwJ2uHu0_000004.npz
 
