@@ -1,21 +1,30 @@
 #!/usr/bin/env bash
 
-set -euo pipefail
+# Exit on error
+set -e
 
+# Folder to commit (change if needed)
+TARGET_DIR="./masked_diffusion"
+
+# Optional: commit message prefix
 MSG_PREFIX="Add file"
 
-# Ensure we are inside a git repo
+# Make sure we're inside a git repo
 if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
-  echo "❌ Not inside a git repository"
+  echo "❌ Not inside a git repository."
   exit 1
 fi
 
-# Get all untracked + modified files recursively (null-delimited, safe)
-git status --porcelain -z | while IFS= read -r -d '' status; do
-  # status format: XY <path>
-  file="${status:3}"
+# Get list of untracked + modified files
+FILES=$(git status --porcelain | awk '{print $2}')
 
-  # Skip if directory (git normally does not list dirs, but just in case)
+if [ -z "$FILES" ]; then
+  echo "✅ No files to commit."
+  exit 0
+fi
+
+for file in $FILES; do
+  # Skip directories
   if [ -d "$file" ]; then
     continue
   fi
@@ -26,4 +35,4 @@ git status --porcelain -z | while IFS= read -r -d '' status; do
   git commit -m "$MSG_PREFIX: $file"
 done
 
-echo "🎉 All files in all subfolders committed one-by-one."
+echo "🎉 All files committed one-by-one."
