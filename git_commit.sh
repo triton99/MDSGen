@@ -4,7 +4,7 @@
 set -e
 
 # Folder to commit (change if needed)
-TARGET_DIR="./masked_diffusion"
+TARGET_DIR="./output_wav"
 
 # Optional: commit message prefix
 MSG_PREFIX="Add file"
